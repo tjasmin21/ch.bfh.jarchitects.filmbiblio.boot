@@ -9,16 +9,16 @@
 //@Entity
 //public class MovieReview implements Serializable
 //{
-//    private Userr reviewer;
+//    private User reviewer;
 //
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    @Id
-//    public Userr getReviewer()
+//    public User getReviewer()
 //    {
 //        return reviewer;
 //    }
 //
-//    public void setReviewer(Userr reviewer)
+//    public void setReviewer(User reviewer)
 //    {
 //        this.reviewer = reviewer;
 //    }

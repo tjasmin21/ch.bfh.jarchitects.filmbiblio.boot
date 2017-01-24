@@ -24,15 +24,15 @@ public class Dvd implements Serializable
         this.id = id;
     }
 
-    private Userr owner;
+    private User owner;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    public Userr getOwner()
+    public User getOwner()
     {
         return owner;
     }
 
-    public void setOwner(Userr owner)
+    public void setOwner(User owner)
     {
         this.owner = owner;
     }

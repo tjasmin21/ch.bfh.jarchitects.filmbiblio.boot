@@ -24,16 +24,16 @@
 //        this.movie = movie;
 //    }
 //
-//    private Userr user;
+//    private User user;
 //
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    @Id
-//    public Userr getUser()
+//    public User getUser()
 //    {
 //        return user;
 //    }
 //
-//    public void setUser(Userr user)
+//    public void setUser(User user)
 //    {
 //        this.user = user;
 //    }

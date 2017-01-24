@@ -1,7 +1,7 @@
 package ch.bfh.jarchitects.filmbiblio.model.specialkeys;
 
 import ch.bfh.jarchitects.filmbiblio.model.Movie;
-import ch.bfh.jarchitects.filmbiblio.model.Userr;
+import ch.bfh.jarchitects.filmbiblio.model.User;
 
 import java.io.Serializable;
 
@@ -10,15 +10,15 @@ import java.io.Serializable;
  */
 public class UserMovieKey implements Serializable
 {
-    private Userr user;
+    private User user;
     private Movie movie;
 
-    public Userr getUser()
+    public User getUser()
     {
         return user;
     }
 
-    public void setUser(Userr user)
+    public void setUser(User user)
     {
         this.user = user;
     }
