@@ -10,6 +10,8 @@ import java.util.List;
 @Entity
 public class Biblio implements Serializable {
     private Long id;
+    private String adress;
+    private String name;
     private List<Dvd> dvds;
 
     @GeneratedValue
@@ -18,18 +20,34 @@ public class Biblio implements Serializable {
     {
         return id;
     }
-
     public void setId(Long id)
     {
         this.id = id;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    public List<Dvd> getDvds()
+    @Basic
+    public String getAdress()
     {
-        return dvds;
+        return adress;
+    }
+    public void setAdress(String adress)
+    {
+        this.adress = adress;
     }
 
+    @Basic
+    public String getName() {
+        return this.name;
+    }
+    public void setName( String name ) {
+        this.name = name;
+
+    }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Dvd> getDvds() {
+        return dvds;
+    }
     public void setDvds(List<Dvd> dvds)
     {
         this.dvds = dvds;

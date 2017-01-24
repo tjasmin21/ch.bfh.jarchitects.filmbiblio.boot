@@ -8,9 +8,11 @@ import java.io.Serializable;
  * Created by Jasmin on 03.11.2016.
  */
 @Entity
-public class Dvd implements Serializable
-{
+public class Dvd implements Serializable {
     private Long id;
+    private User owner;
+    private Movie movie;
+    private WaitingList waitingList;
 
     @GeneratedValue
     @Id
@@ -24,8 +26,6 @@ public class Dvd implements Serializable
         this.id = id;
     }
 
-    private User owner;
-
     @ManyToOne(cascade = CascadeType.ALL)
     public User getOwner()
     {
@@ -37,7 +37,6 @@ public class Dvd implements Serializable
         this.owner = owner;
     }
 
-    private Movie movie;
 
     @ManyToOne(cascade = CascadeType.ALL)
     public Movie getMovie()
@@ -49,4 +48,18 @@ public class Dvd implements Serializable
     {
         this.movie = movie;
     }
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    public WaitingList getWaitingList() {
+        return waitingList;
+
+    }
+
+    public void setWaitingList( WaitingList waitingList ) {
+        this.waitingList = waitingList;
+
+    }
+
+
 }
