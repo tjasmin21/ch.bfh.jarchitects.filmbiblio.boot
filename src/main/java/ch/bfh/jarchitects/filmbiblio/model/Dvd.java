@@ -7,13 +7,24 @@ import java.io.Serializable;
 /**
  * Created by Jasmin on 03.11.2016.
  */
+
+/**
+ * Traditional JPA ‘Entity’ classes are specified in a persistence.xml file
+ * With Spring Boot this file is not used --> instead it makes a 'Entity Scanning'
+ */
 @Entity
 public class Dvd implements Serializable
 {
-    private Long id;
-
     @GeneratedValue
     @Id
+    private Long id;
+
+    @ManyToOne
+    private Userr owner;
+
+    @ManyToOne
+    private Movie movie;
+
     public Long getId()
     {
         return id;
@@ -24,9 +35,6 @@ public class Dvd implements Serializable
         this.id = id;
     }
 
-    private Userr owner;
-
-    @ManyToOne(cascade = CascadeType.ALL)
     public Userr getOwner()
     {
         return owner;
@@ -37,9 +45,6 @@ public class Dvd implements Serializable
         this.owner = owner;
     }
 
-    private Movie movie;
-
-    @ManyToOne(cascade = CascadeType.ALL)
     public Movie getMovie()
     {
         return movie;

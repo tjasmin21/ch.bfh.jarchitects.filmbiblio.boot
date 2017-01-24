@@ -8,6 +8,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * Created by Jasmin on 17.11.2016.
  */
 @RepositoryRestResource(path = "users")
-public interface UserRepository extends CrudRepository<Userr, String>
+public interface UserRepository extends CrudRepository<Userr, Long>
 {
 }

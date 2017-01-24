@@ -2,7 +2,6 @@ package ch.bfh.jarchitects.filmbiblio.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by Jasmin on 03.11.2016.
@@ -10,11 +9,36 @@ import java.util.List;
 @Entity
 public class Movie implements Serializable
 {
-
-    private Long id;
-
     @GeneratedValue
     @Id
+    private Long id;
+
+    /**
+     * @Basic(optional = false) - this feature should be evaluated within the runtime
+     * An exception raised before SQL is sent to the database
+     * *
+     * Similar:
+     * @Column(nullable = false) - only a reference to database column
+     */
+    @Basic(optional = false)
+    private String title;
+
+    /**
+     * @Column(length = 500) - limits description length
+     */
+    @Column(length = 5000)
+    private String description;
+
+    /**
+     * @Basic - signifies that an attribute is to be persisted and a standard mapping is to be used
+     */
+    @Basic
+    private Integer release_year;
+
+    @Basic
+    private Long duration;
+
+
     public Long getId()
     {
         return id;
@@ -25,9 +49,7 @@ public class Movie implements Serializable
         this.id = id;
     }
 
-    private String title;
 
-    @Basic
     public String getTitle()
     {
         return title;
@@ -38,22 +60,18 @@ public class Movie implements Serializable
         this.title = title;
     }
 
-    private String decription;
 
-    @Basic
-    public String getDecription()
+    public String getDescription()
     {
-        return decription;
+        return description;
     }
 
-    public void setDecription(String decription)
+    public void setDescription(String description)
     {
-        this.decription = decription;
+        this.description = description;
     }
 
-    private Integer release_year;
 
-    @Basic
     public Integer getRelease_year()
     {
         return release_year;
@@ -64,9 +82,7 @@ public class Movie implements Serializable
         this.release_year = release_year;
     }
 
-    private Long duration;
 
-    @Basic
     public Long getDuration()
     {
         return duration;
@@ -78,42 +94,4 @@ public class Movie implements Serializable
     }
 
 
-//    private List<MovieReview> reviews;
-//
-//    @OneToMany(cascade = CascadeType.ALL)
-//    public List<MovieReview> getReviews()
-//    {
-//        return reviews;
-//    }
-//
-//    public void setReviews(List<MovieReview> reviews)
-//    {
-//        this.reviews = reviews;
-//    }
-//
-//    private List<WaitingList> waitinglist;
-//
-//    @OneToMany(cascade = CascadeType.ALL)
-//    public List<WaitingList> getWaitinglist()
-//    {
-//        return waitinglist;
-//    }
-//
-//    public void setWaitinglist(List<WaitingList> waitinglist)
-//    {
-//        this.waitinglist = waitinglist;
-//    }
-
-    private List<Dvd> dvds;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    public List<Dvd> getDvds()
-    {
-        return dvds;
-    }
-
-    public void setDvds(List<Dvd> dvds)
-    {
-        this.dvds = dvds;
-    }
 }
