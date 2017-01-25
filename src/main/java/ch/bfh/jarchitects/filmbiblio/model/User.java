@@ -10,42 +10,47 @@ import java.util.List;
 @Entity
 public class User implements Serializable {
     private String userid;
+    private Biblio biblio;
+    private String email;
+    private String password;
 
     @Id
     public String getUserid()
     {
         return userid;
     }
-
     public void setUserid(String userid)
     {
         this.userid = userid;
     }
-
-    private String email;
 
     @Basic
     public String getEmail()
     {
         return email;
     }
-
     public void setEmail(String email)
     {
         this.email = email;
     }
-
-    private String password;
 
     @Basic
     public String getPassword()
     {
         return password;
     }
-
     public void setPassword(String password)
     {
         this.password = password;
     }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    public Biblio getBiblio() {
+        return this.biblio;
+    }
+    public void setBiblio( Biblio biblio ) {
+        this.biblio = biblio;
+    }
+
 
 }
