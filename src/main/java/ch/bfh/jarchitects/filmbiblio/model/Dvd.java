@@ -1,65 +1,46 @@
 package ch.bfh.jarchitects.filmbiblio.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
-
 
 /**
- * Created by Jasmin on 03.11.2016.
+ * Traditional JPA ‘Entity’ classes are specified in a persistence.xml file
+ * With Spring Boot this file is not used --> instead it makes a 'Entity Scanning'
  */
 @Entity
-public class Dvd implements Serializable {
-    private Long id;
-    private User owner;
-    private Movie movie;
-    private WaitingList waitingList;
+public class Dvd {
 
     @GeneratedValue
     @Id
-    public Long getId()
-    {
+    private Long id;
+
+    @ManyToOne
+    private Userr owner;
+
+    @ManyToOne
+    private Movie movie;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Long id)
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    public User getOwner()
-    {
+    public Userr getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner)
-    {
+    public void setOwner(Userr owner) {
         this.owner = owner;
     }
 
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    public Movie getMovie()
-    {
+    public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(Movie movie)
-    {
+    public void setMovie(Movie movie) {
         this.movie = movie;
     }
-
-
-    @OneToOne(cascade = CascadeType.ALL)
-    public WaitingList getWaitingList() {
-        return waitingList;
-
-    }
-
-    public void setWaitingList( WaitingList waitingList ) {
-        this.waitingList = waitingList;
-
-    }
-
 
 }

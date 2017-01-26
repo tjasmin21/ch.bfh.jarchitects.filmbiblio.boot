@@ -1,8 +1,5 @@
 package ch.bfh.jarchitects.filmbiblio.repository;
 
-/**
- * Created by Marc on 24.01.2017.
- */
 
 import ch.bfh.jarchitects.filmbiblio.model.Biblio;
 import org.springframework.data.repository.CrudRepository;
