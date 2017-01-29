@@ -1,0 +1,71 @@
+\documentclass[12pt,halfparskip]{scrreprt} 
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc} %font
+%\usepackage[default,osfigures,scale=1]{opensans} font
+\usepackage{DejaVuSansCondensed}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel} %german
+\usepackage{graphicx} %images
+\usepackage[autostyle=true,german=quotes]{csquotes} %quotation
+\usepackage{tabularx} %tables
+
+% PAGE MARGINS
+\usepackage{geometry}
+\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=25mm, headsep=10mm, footskip=10mm}
+
+% HEADER AND FOOTER
+\usepackage[automark]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\setfootsepline[\textwidth]{0.5pt}
+\ofoot[]{\pagemark}
+
+% DOCUMENT NAMING
+\title{Dokumentation Fallbeispiel}
+\subtitle{DVD Archiv}
+\author{Jasmin Thevathas, Marc Hutzli, Robin Schmid\\JARCHITECTS}
+\date{29. Januar in Burgdorf}	
+
+% VARIABLES FOR TITLE PAGE
+\makeatletter
+\let\title\@title
+\let\author\@author
+\let\date\@date
+\let\subtitle\@subtitle
+\makeatother
+
+% THE DOCUMENT
+\begin{document}
+
+% TITLEPAGE
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        
+        \Huge{\textbf{\title}}\\
+        \vspace{2cm}
+        \LARGE{\subtitle}
+
+        \vspace{1.5cm}
+        
+        \large{\author}
+        
+        \vspace{1.5cm}
+
+        \large{\date}
+        \vfill
+        
+        \vspace{0.8cm}
+                
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+
+\include{introduction}
+\include{domainmodel}
+\include{work}
+\include{setup}
+\end{document}
