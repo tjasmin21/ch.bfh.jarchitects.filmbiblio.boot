@@ -5,9 +5,6 @@ import com.sun.org.apache.xpath.internal.operations.String;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by Jasmin on 03.11.2016.
- */
 @Entity
 public class MovieReview implements Serializable {
     @GeneratedValue
