@@ -1,15 +1,11 @@
 package ch.bfh.jarchitects.filmbiblio.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
-/**
- * Created by Jasmin on 03.11.2016.
- */
 @Entity
+@Table(name = "user")
 public class Userr implements Serializable
 {
     @GeneratedValue
@@ -25,6 +21,17 @@ public class Userr implements Serializable
     @Basic
     private String password;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Dvd> dvds;
+
+    @OneToMany(mappedBy = "reviewer")
+    private List<MovieReview> reviews;
+
+    @OneToMany(mappedBy = "tenant")
+    private List<Rent> rents;
+
+    @OneToMany(mappedBy = "user")
+    private List<WaitingList> waitinglists;
 
     public Long getId()
     {
@@ -68,5 +75,43 @@ public class Userr implements Serializable
         this.password = password;
     }
 
+    public List<Dvd> getDvds()
+    {
+        return dvds;
+    }
 
+    public void setDvds(List<Dvd> dvds)
+    {
+        this.dvds = dvds;
+    }
+
+    public List<MovieReview> getReviews()
+    {
+        return reviews;
+    }
+
+    public void setReviews(List<MovieReview> reviews)
+    {
+        this.reviews = reviews;
+    }
+
+    public List<Rent> getRents()
+    {
+        return rents;
+    }
+
+    public void setRents(List<Rent> rents)
+    {
+        this.rents = rents;
+    }
+
+    public List<WaitingList> getWaitinglists()
+    {
+        return waitinglists;
+    }
+
+    public void setWaitinglists(List<WaitingList> waitinglists)
+    {
+        this.waitinglists = waitinglists;
+    }
 }

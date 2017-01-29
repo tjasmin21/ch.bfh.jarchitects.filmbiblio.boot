@@ -5,10 +5,6 @@ import java.io.Serializable;
 
 
 /**
- * Created by Jasmin on 03.11.2016.
- */
-
-/**
  * Traditional JPA ‘Entity’ classes are specified in a persistence.xml file
  * With Spring Boot this file is not used --> instead it makes a 'Entity Scanning'
  */
@@ -24,6 +20,8 @@ public class Dvd implements Serializable
 
     @ManyToOne
     private Movie movie;
+
+
 
     public Long getId()
     {

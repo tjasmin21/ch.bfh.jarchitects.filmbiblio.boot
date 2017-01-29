@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.String;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Jasmin on 03.11.2016.
@@ -40,6 +41,14 @@ public class Movie implements Serializable
     @Basic
     private Long duration;
 
+    @OneToMany(mappedBy = "movie")
+    private List<Dvd> dvds;
+
+    @OneToMany(mappedBy = "movie")
+    private List<MovieReview> reviews;
+
+    @OneToMany(mappedBy = "movie")
+    private List<WaitingList> waitingLists;
 
     public Long getId()
     {
@@ -96,4 +105,33 @@ public class Movie implements Serializable
     }
 
 
+    public List<Dvd> getDvds()
+    {
+        return dvds;
+    }
+
+    public void setDvds(List<Dvd> dvds)
+    {
+        this.dvds = dvds;
+    }
+
+    public List<MovieReview> getReviews()
+    {
+        return reviews;
+    }
+
+    public void setReviews(List<MovieReview> reviews)
+    {
+        this.reviews = reviews;
+    }
+
+    public List<WaitingList> getWaitingLists()
+    {
+        return waitingLists;
+    }
+
+    public void setWaitingLists(List<WaitingList> waitingLists)
+    {
+        this.waitingLists = waitingLists;
+    }
 }
