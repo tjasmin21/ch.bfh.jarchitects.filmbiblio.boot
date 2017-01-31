@@ -6,9 +6,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Jasmin on 03.11.2016.
- */
 @Entity
 public class Movie implements Serializable
 {

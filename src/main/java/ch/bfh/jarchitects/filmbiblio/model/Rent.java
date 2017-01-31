@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by Jasmin on 03.11.2016.
- */
 @Entity
 public class Rent implements Serializable
 {

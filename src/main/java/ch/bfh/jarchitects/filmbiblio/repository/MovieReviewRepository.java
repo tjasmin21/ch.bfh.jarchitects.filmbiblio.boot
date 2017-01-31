@@ -3,9 +3,6 @@ package ch.bfh.jarchitects.filmbiblio.repository;//package ch.bfh.jarchitects.fi
 //import org.h2.engine.Userr;
 //import org.springframework.data.repository.CrudRepository;
 //
-///**
-// * Created by Jasmin on 17.11.2016.
-// */
 //public interface MovieReviewRepository extends CrudRepository<Userr, >
 //{
 //}
