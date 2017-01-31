@@ -1,18 +1,20 @@
 package ch.bfh.jarchitects.filmbiblio.model;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "user")
-public class Userr implements Serializable
+public class Userr
 {
     @GeneratedValue
     @Id
     private Long id;
 
-    @Basic
+    @NotBlank
+    @Column(unique = true)
     private String username;
 
     @Basic
@@ -21,16 +23,20 @@ public class Userr implements Serializable
     @Basic
     private String password;
 
-    @OneToMany(mappedBy = "owner")
+    /**
+     * the cascade being useful for the one-to-many side only
+     * if user gets deleted, also his "children" should get deleted(like dvd, rents, waitinglist entries)
+     */
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Dvd> dvds;
 
-    @OneToMany(mappedBy = "reviewer")
+    @OneToMany(mappedBy = "reviewer", cascade = CascadeType.ALL)
     private List<MovieReview> reviews;
 
-    @OneToMany(mappedBy = "tenant")
+    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL)
     private List<Rent> rents;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<WaitingList> waitinglists;
 
     public Long getId()

@@ -1,7 +1,9 @@
 package ch.bfh.jarchitects.filmbiblio.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 /**
@@ -9,19 +11,20 @@ import java.io.Serializable;
  * With Spring Boot this file is not used --> instead it makes a 'Entity Scanning'
  */
 @Entity
-public class Dvd implements Serializable
+public class Dvd
 {
     @GeneratedValue
     @Id
     private Long id;
 
+    /**
+     * No use for
+     */
     @ManyToOne
     private Userr owner;
 
     @ManyToOne
     private Movie movie;
-
-
 
     public Long getId()
     {

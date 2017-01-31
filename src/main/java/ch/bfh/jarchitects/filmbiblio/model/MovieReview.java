@@ -3,10 +3,9 @@ package ch.bfh.jarchitects.filmbiblio.model;
 import com.sun.org.apache.xpath.internal.operations.String;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-public class MovieReview implements Serializable {
+public class MovieReview{
     @GeneratedValue
     @Id
     private Long id;

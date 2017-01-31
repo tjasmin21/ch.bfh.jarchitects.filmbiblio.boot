@@ -1,13 +1,13 @@
 package ch.bfh.jarchitects.filmbiblio.model;
 
 import com.sun.org.apache.xpath.internal.operations.String;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Movie implements Serializable
+public class Movie
 {
     @GeneratedValue
     @Id
@@ -20,13 +20,15 @@ public class Movie implements Serializable
      * Similar:
      * @Column(nullable = false) - only a reference to database column
      */
-    @Basic(optional = false)
+    @NotBlank
+    @Column(unique = true)
     private String title;
 
     /**
      * @Column(length = 500) - limits description length
      */
-    @Column(length = 5000)
+    @NotBlank
+    @Column(length = 500)
     private String description;
 
     /**
