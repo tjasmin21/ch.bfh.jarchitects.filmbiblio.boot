@@ -44,7 +44,7 @@ public class Movie
     private List<MovieReview> reviews;
 
     @OneToMany(mappedBy = "movie")
-    private List<WaitingList> waitingLists;
+    private List<ReservationRecord> reservationRecords;
 
 
     public Long getId()

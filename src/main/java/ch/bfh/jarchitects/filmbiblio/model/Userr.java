@@ -40,7 +40,7 @@ public class Userr
     private List<Rent> rents;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<WaitingList> waitinglists;
+    private List<ReservationRecord> waitinglists;
 
 
     public Long getId()
