@@ -1,0 +1,15 @@
+\chapter{Vorgehen}
+\label{chap:work}
+
+\section{Arbeit am Domain Model}
+Bei Domain Model haben wir uns verschieden Gedanken gemacht. Beispielsweise wurde die Vermietung zuerst als Beziehung zwischen User und DVD modelliert. Somit hätte eine DVD ein Datenbankfeld mit \emph{userID} gehabt, welches entweder gesetzt gewesen wäre (verliehen) oder \textbf{null} wenn der DVD noch frei ist. Dies hätte jedoch sehr viele Nullwerte in der Datenbank zur Folge gehabt. Deshalb wurde diese Beziehung explizit als Entität dargestellt.
+
+\section{Arbeit am Projekt}
+Gemäss den vorgaben im Unterricht wurde das Projekt zu erst mit Spring alleine umgesetzt. Nach der Lektion \enquote{Spring Boot} entschieden wir uns dann, dieses Framework zu verwenden, da wir auch künftige Projekte in dieser Grössenordnung damit umsetzen würden. Die erste Version war zwar lauffähig im HAL-Browser, da wir aber alle auf unterschiedlichen Branches herumpröbelten, kamen wir nicht zu einer Konsenslösung. Somit begannen wir bei der Abgabe bei Null und konnten somit gleich alle gemachten Lehren in die Neuumsetzung einfliessen lassen.
+
+
+\section{Probleme}
+Die Probleme betrafen unter anderem die \textbf{H2}-Datenbank. Wir hatten nicht alle den gleichen Arbeitsstand, unter anderem auf Grund der verschiedenen git-Branches. Als Lösung inkludierten wir die Files im Projekt und verweisen in den \emph{application.properties} direkt auf das lokale File.  
+
+Ein weiteres Problem tauchte auf mit gewissen unnötigen Zwischentabellen, welche das Framework automatisch erstellte. Dies konnten wir beheben, in dem wir bei den Properties in der Annotation den Parameter \emph{mappedBy} hinzufügten.
+
