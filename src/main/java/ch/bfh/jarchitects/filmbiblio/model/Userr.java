@@ -1,8 +1,9 @@
 package ch.bfh.jarchitects.filmbiblio.model;
 
-import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -13,13 +14,15 @@ public class Userr
     @Id
     private Long id;
 
-    @NotBlank
+    @NotNull
     @Column(unique = true)
     private String username;
 
+    @NotNull
     @Basic
     private String email;
 
+    @NotNull
     @Basic
     private String password;
 
@@ -38,6 +41,7 @@ public class Userr
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<WaitingList> waitinglists;
+
 
     public Long getId()
     {
@@ -78,46 +82,18 @@ public class Userr
 
     public void setPassword(String password)
     {
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
     }
 
-    public List<Dvd> getDvds()
+
+    public Userr(String username, String email, String password)
     {
-        return dvds;
+        this.username = username;
+        this.email = email;
+        setPassword(password);
     }
 
-    public void setDvds(List<Dvd> dvds)
+    public Userr()
     {
-        this.dvds = dvds;
-    }
-
-    public List<MovieReview> getReviews()
-    {
-        return reviews;
-    }
-
-    public void setReviews(List<MovieReview> reviews)
-    {
-        this.reviews = reviews;
-    }
-
-    public List<Rent> getRents()
-    {
-        return rents;
-    }
-
-    public void setRents(List<Rent> rents)
-    {
-        this.rents = rents;
-    }
-
-    public List<WaitingList> getWaitinglists()
-    {
-        return waitinglists;
-    }
-
-    public void setWaitinglists(List<WaitingList> waitinglists)
-    {
-        this.waitinglists = waitinglists;
     }
 }

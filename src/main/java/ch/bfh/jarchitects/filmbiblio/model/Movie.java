@@ -1,9 +1,7 @@
 package ch.bfh.jarchitects.filmbiblio.model;
 
-import com.sun.org.apache.xpath.internal.operations.String;
-import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -20,14 +18,13 @@ public class Movie
      * Similar:
      * @Column(nullable = false) - only a reference to database column
      */
-    @NotBlank
+    @NotNull
     @Column(unique = true)
     private String title;
 
     /**
      * @Column(length = 500) - limits description length
      */
-    @NotBlank
     @Column(length = 500)
     private String description;
 
@@ -49,6 +46,7 @@ public class Movie
     @OneToMany(mappedBy = "movie")
     private List<WaitingList> waitingLists;
 
+
     public Long getId()
     {
         return id;
@@ -58,7 +56,6 @@ public class Movie
     {
         this.id = id;
     }
-
 
     public String getTitle()
     {
@@ -70,7 +67,6 @@ public class Movie
         this.title = title;
     }
 
-
     public String getDescription()
     {
         return description;
@@ -81,7 +77,6 @@ public class Movie
         this.description = description;
     }
 
-
     public Integer getRelease_year()
     {
         return release_year;
@@ -91,7 +86,6 @@ public class Movie
     {
         this.release_year = release_year;
     }
-
 
     public Long getDuration()
     {
@@ -104,33 +98,4 @@ public class Movie
     }
 
 
-    public List<Dvd> getDvds()
-    {
-        return dvds;
-    }
-
-    public void setDvds(List<Dvd> dvds)
-    {
-        this.dvds = dvds;
-    }
-
-    public List<MovieReview> getReviews()
-    {
-        return reviews;
-    }
-
-    public void setReviews(List<MovieReview> reviews)
-    {
-        this.reviews = reviews;
-    }
-
-    public List<WaitingList> getWaitingLists()
-    {
-        return waitingLists;
-    }
-
-    public void setWaitingLists(List<WaitingList> waitingLists)
-    {
-        this.waitingLists = waitingLists;
-    }
 }

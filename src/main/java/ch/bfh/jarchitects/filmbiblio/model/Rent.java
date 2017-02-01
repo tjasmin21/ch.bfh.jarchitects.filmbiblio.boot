@@ -1,6 +1,7 @@
 package ch.bfh.jarchitects.filmbiblio.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -11,13 +12,16 @@ public class Rent
     private Long id;
 
     @OneToOne
+    @JoinColumn(name = "dvd_id", referencedColumnName = "ID")
     private Dvd dvd;
 
+    @NotNull
     @Basic
     @Temporal(TemporalType.DATE)
     private Date lent_date;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "tenant_id")
     private Userr tenant;
 
 

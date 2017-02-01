@@ -1,9 +1,6 @@
 package ch.bfh.jarchitects.filmbiblio.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 
 /**
@@ -17,13 +14,15 @@ public class Dvd
     @Id
     private Long id;
 
-    /**
-     * No use for
-     */
-    @ManyToOne
+    @OneToOne(mappedBy = "dvd")
+    private Rent rent;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "owner_id")
     private Userr owner;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "movie_id")
     private Movie movie;
 
     public Long getId()
@@ -34,6 +33,16 @@ public class Dvd
     public void setId(Long id)
     {
         this.id = id;
+    }
+
+    public Rent getRent()
+    {
+        return rent;
+    }
+
+    public void setRent(Rent rent)
+    {
+        this.rent = rent;
     }
 
     public Userr getOwner()
